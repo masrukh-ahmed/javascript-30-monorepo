@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
+
+      // Regular
+      console.log("Hello there!");
+
+      // Interpolated
+      console.log("My name is %s.", "Masrukh Ahmed");
+
+      // Styled
+      console.log(
+        "%c Hi there!",
+        "font-size: 50px; text-shadow: 1px 1px 5px black"
+      );
+
+      // warning!
+      console.warn("Don't Procrastinate !!");
+
+      // Error :|
+      console.error("Can't focus !!");
+
+      // Info
+      console.info(
+        'The "2-minute rule" for procrastination is a productivity method that states: if a task takes less than two minutes to complete, do it immediately. '
+      );
+
+      // Testing
+      console.assert(1 * 2 === 4 / 1, "Wrong Maths bro !!");
+
+      // clearing
+      console.clear();
+
+      // Viewing DOM Elements
+      let para = document.querySelector("p");
+      console.dir(para);
+      console.log(para); //see the difference between the log and dir console method
+
+      // Grouping together
+      console.table(dogs);
+      dogs.forEach((dog) => {
+        console.group(`${dog.name}:`); // can be .group() or .groupCollapsed()
+        console.log(`The name of the dog is ${dog.name}.`);
+        console.log(`${dog.name} is ${dog.age} years old.`);
+        console.groupEnd();
+      });
+
+      // counting
+      for (let i = 0; i < 10; i++) {
+        console.count("Action performed");
+      }
+
+      // timing
+      let endpoint = "https://catfact.ninja/fact";
+
+      async function getCatFacts() {
+        let data = await fetch(endpoint);
+        let jsonData = await data.json();
+        return jsonData.fact;
+      }
+      async function fetchTenCatFacts() {
+        console.time("10 Cat facts");
+        for (let i = 0; i < 10; i++) {
+          let fact = await getCatFacts(); // wait for each fact
+          console.log(`${i + 1}. ${fact}`);
+        }
+        console.timeEnd("10 Cat facts");
+      }
+
+      fetchTenCatFacts();
+    </script>
+  </body>
+</html>

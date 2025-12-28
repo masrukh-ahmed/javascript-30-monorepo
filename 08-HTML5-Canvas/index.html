@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML5 Canvas</title>
+  </head>
+  <body>
+    <canvas id="draw" width="200" height="300"></canvas>
+    <!-- css styling -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #draw {
+        border: 10px solid lightblue;
+      }
+    </style>
+  </body>
+  <!-- js functionalities -->
+  <script>
+    const canvas = document.querySelector("#draw");
+    const tools = canvas.getContext("2d"); //tools for drawing on the canvas
+
+    canvas.width = window.innerWidth; // increasing the canvas height and width to fit the whole browser window
+    canvas.height = window.innerHeight;
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let currentHue = 0;
+    let direction = true;
+
+    function draw(e) {
+      if (!isDrawing) return; //stop the function from drawing when the mouse isn't down
+      console.log(e);
+      tools.beginPath();
+      // tools.lineWidth = 5; // thickness of the line
+      tools.strokeStyle = `hsl(${currentHue},100%,50%)`;
+
+      tools.lineJoin = "round";
+      tools.lineCap = "round";
+      //start from
+      tools.moveTo(lastX, lastY);
+      // go to
+      tools.lineTo(e.offsetX, e.offsetY);
+      tools.stroke();
+
+      currentHue++; //keeps changing the hue by incrementation of 1, everytime the draw function is called
+      if (currentHue > 360) {
+        // condition to reset the hue wheel once it reaches max range
+        currentHue = 0;
+      }
+      if (tools.lineWidth >= 100 || tools.lineWidth <= 1) {
+        //conditon to toggle the direction variable
+        direction = !direction;
+      }
+
+      if (direction) {
+        // conditon to increase & decrease the width of the line
+        tools.lineWidth++;
+      } else {
+        tools.lineWidth--;
+      }
+
+      [lastX, lastY] = [event.offsetX, event.offsetY]; // update lastX and lastY to current position
+    }
+
+    canvas.addEventListener("mousedown", (event) => {
+      isDrawing = true;
+      [lastX, lastY] = [event.offsetX, event.offsetY];
+      currentHue = 0; //to reset the hue every time a new line starts
+      tools.lineWidth = 1; // to reset the line width each time a new line starts
+    });
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", () => (isDrawing = false));
+    canvas.addEventListener("mouseout", () => (isDrawing = false));
+  </script>
+</html>

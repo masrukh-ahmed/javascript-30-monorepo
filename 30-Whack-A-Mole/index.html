@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Whack A Mole!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <h1>Whack-a-mole! <span class="score">0</span></h1>
+    <button class="start-btn">Start!</button>
+
+    <div class="game">
+      <div class="hole hole1">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole2">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole3">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole4">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole5">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole6">
+        <div class="mole"></div>
+      </div>
+    </div>
+
+    <script>
+      let lastHole,
+        isTimerUp = false,
+        isGameActive = false,
+        bang = 0,
+        peepCount = 0;
+
+      const startBtn = document.querySelector(".start-btn");
+      const holes = document.querySelectorAll(".hole");
+      const scoreBoard = document.querySelector(".score");
+      const moles = document.querySelectorAll(".mole");
+
+      function randomTime(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+
+      function randomHole(holes) {
+        const randomIdx = Math.floor(Math.random() * holes.length);
+
+        if (randomIdx == lastHole) {
+          console.log("Hell na that's the same one");
+          return randomHole(holes);
+        }
+
+        lastHole = randomIdx;
+        return holes[randomIdx];
+      }
+
+      function peep() {
+        if (isGameActive == true && isTimerUp == false) {
+          const latency = randomTime(200, 1500);
+          const hole = randomHole(holes);
+
+          hole.classList.add("up");
+          setTimeout(() => {
+            peepCount++;
+            hole.classList.remove("up");
+            peep(); //recursion based repeat
+          }, latency);
+        } else {
+          return;
+        }
+      }
+
+      function lockStart() {
+        startBtn.removeEventListener("click", startGame);
+      }
+      function unlockStart() {
+        startBtn.addEventListener("click", startGame);
+      }
+
+      function resetGame() {
+        isTimerUp = false;
+        isGameActive = false;
+        bang = 0;
+        peepCount = 0;
+        scoreBoard.innerHTML = bang;
+      }
+
+      function startGame() {
+        resetGame(); //resetting game at every new game start
+        console.log("start button clicked");
+        isGameActive = true;
+        lockStart(); // lock the start button
+        peep();
+        setTimeout(() => {
+          //once current game session time ends
+          isTimerUp = true;
+          alert(`You banged ${bang} moles out of ${peepCount}`);
+          unlockStart(); //unlock start button for replay
+          console.log("Timer Up");
+        }, 10000);
+      }
+
+      function headBang() {
+        bang++;
+        scoreBoard.innerHTML = bang;
+      }
+      moles.forEach((mole) => {
+        mole.addEventListener("click", headBang);
+      });
+      startBtn.addEventListener("click", startGame);
+    </script>
+  </body>
+</html>

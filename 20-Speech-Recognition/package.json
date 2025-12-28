@@ -1,0 +1,23 @@
+{
+  "name": "20.-native-speech-recognition",
+  "version": "1.0.0",
+  "description": "js30 20th challenge, needs a server since we will be using the Web Speech API, that's what was told in the tuto, didn't crosscheck since didnt have time to verify why we  needed a server for running this APi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masrukh-ahmed/speech-recognition-JS30-20th.git"
+  },
+  "author": "Masrukh Ahmed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masrukh-ahmed/speech-recognition-JS30-20th/issues"
+  },
+  "homepage": "https://github.com/masrukh-ahmed/speech-recognition-JS30-20th#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
+}

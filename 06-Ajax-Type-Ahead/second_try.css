@@ -1,0 +1,111 @@
+:root {
+  --bg-color: #1E1E1E;
+  --sec-bg-color: #2A2A2A;
+  --main-text-color: #D1D1D1;
+  --sec-text-color: #A0A0A0;
+  --positive-green: #3CCF91;
+  --negative-red: #E76F51;
+  --search-input-border-color: #3A9DF2;
+
+}
+
+html {
+  font-family: "Urbanist", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--main-text-color);
+}
+
+.proj-container {
+  margin: 0 auto;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#search-bar {
+  background-color: var(--sec-bg-color);
+  border: none;
+  outline: 1px solid rgba(255, 255, 255, 0.267);
+  width: 30%;
+  padding: 0.75rem 1.5rem;
+  border-radius: .5rem;
+  color: var(--main-text-color);
+  font-size: 2rem;
+}
+#search-bar::placeholder{
+  color: var(--sec-text-color);
+}
+#search-bar:active {
+  outline: 1px solid var(--search-input-border-color);
+}
+
+ul.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+ul.suggestions li {
+  background-color: var(--sec-bg-color);
+  margin-bottom: .5rem;
+  padding: .5rem 1rem;
+  width: 100%;
+  text-align: start;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  outline: 1px solid rgba(255, 255, 255, 0.151);
+  transition: outline 0.35s ease-in-out,
+              transform 0.35s ease-in-out,
+              box-shadow 0.35s ease-in-out;
+}
+ul.suggestions li:hover {
+  outline: 1px solid var(--search-input-border-color);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0px 0px 20px 0px black;
+  transform: scale(1.1);
+}
+
+ul.suggestions li .city-state, .population, .growth {
+  margin: .25rem auto;
+}
+.city-state {
+  color: white;
+}
+.population {
+  color: var(--sec-text-color);
+}
+.population span {
+  color: var(--main-text-color);
+}
+.growth {
+  color: var(--sec-text-color);
+}
+
+/* extra classes to add color for the growth numbers based on +/- */
+.growth-positive {
+  color: var(--positive-green);
+}
+.growth-negative {
+  color: var(--negative-red);
+}
+
+/* for text highlight based on search input */
+.hl {
+  background-color: #38BDF8; /* Tailwind sky-400 */
+  color: #0F172A; /* very dark navy text */
+  text-transform: capitalize;
+  font-weight: 800;
+}

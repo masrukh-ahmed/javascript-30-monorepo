@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio 💪💪</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <script>
+    // ## Array Cardio Day 2
+
+    const people = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+    // Some and Every Checks
+    // Array.prototype.some() // is at least one person 19 or older?
+    let one19 = people.some(people => {
+      let currentDate = (new Date()).getFullYear();
+      let age = currentDate - people.year;
+      if (age>=19) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+
+    if (one19) {
+      console.log("Yes one person is 19 or older among everyone.");
+    } else {
+      console.log("No one is 19 or older among everyone.")
+    }
+    
+    console.log("---------------------------------------------------------------------------------");
+    // Array.prototype.every() // is everyone 19 or older?
+
+    let every19 = people.every(people => {
+      let currentDate = (new Date()).getFullYear();
+      let age = currentDate - people.year;
+      if (age>=19) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    if (every19) {
+      console.log("Yes everyone is 19 or older.");
+    } else {
+      console.log("Not everyone is 19 or older.")
+    }
+
+    console.log("---------------------------------------------------------------------------------");
+    // Array.prototype.find()
+    // Find is like filter, but instead returns just the one (the first matching element) you are looking for
+    // find the comment with the ID of 823423
+    let commID = comments.find(comment => {
+      if (comment.id === 823423){
+        return true;
+      }
+    })
+    console.log(`The comment with id 823423 is "${commID.text}".`);
+
+    console.log("---------------------------------------------------------------------------------");
+    // Array.prototype.findIndex()
+    // Find the comment with this ID
+    // delete the comment with the ID of 823423
+
+    let findIDindex = comments.findIndex(comment => {
+      if (comment.id === 823423) {
+        return true;
+      }
+    })
+    console.table(comments);
+    console.log(`The new array with previous object at ${findIDindex} removed has been given below: `);
+    let newComments = [
+      ...comments.slice(0, findIDindex), 
+      ...comments.slice(findIDindex+1)
+    ];
+    console.table(newComments);
+
+  </script>
+</body>
+</html>

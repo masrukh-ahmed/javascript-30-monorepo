@@ -1,0 +1,25 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: rgb(255, 196, 0);
+}
+
+.words{
+  background-color: whitesmoke;
+  width: 60%;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+.words p{
+  text-decoration: underline;
+  margin-bottom: .5rem;
+}
+.header {
+  margin-bottom: 1rem;
+}

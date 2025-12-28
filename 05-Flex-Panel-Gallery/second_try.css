@@ -1,0 +1,80 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.panels {
+  display: flex;
+  width: 95vw;
+  height: 95vh;
+  margin: 1.5rem auto;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  filter: blur(2px);
+  transition: flex 0.7s ease-in-out,
+              font-size 0.7s ease-in-out,
+              filter 1.5s ease-in-out;
+}
+
+.panel::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.356);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out;
+}
+.panel:hover::before {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.subtitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.7s ease-in-out;
+  transition-delay: 0.3s;
+}
+.subtitle.text-active{
+  opacity: 1;
+}
+
+.title {
+  font-weight: 700;
+  opacity: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.7s ease-in-out;
+  transition-delay: 0.5s;
+}
+.title.text-active {
+  opacity: 1;
+}
+
+.panel.open {
+  flex: 5;
+  opacity: 1;
+  filter: blur(0px);
+  font-size: 3rem;
+}

@@ -1,0 +1,58 @@
+:root {
+  --bg-main: #0A0F1C;
+  --canvas-bg: #141A26;
+  --neon-border-glow: #00BFFF;
+  --main-text-clr: #33CCFF;
+}
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--bg-main);
+  color: var(--main-text-clr);
+  font-family: "DM Sans", sans-serif;
+}
+.header {
+  font-size: 4rem;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.329);
+}
+
+.canvas-container {
+  position: relative;
+  /* border: 1px solid red; */
+  height: 75vh;
+  width: 80vw;
+  margin: 0 auto;
+}
+canvas {
+  outline: 2px solid var(--neon-border-glow);
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  width: 90%;
+  border-radius: 2rem;
+  background-color: var(--canvas-bg);
+  box-shadow: 0 0 20px 0px rgba(0, 255, 255, 0.3);
+}
+
+#reset-btn {
+  padding: .6rem .5rem;
+  background-color: transparent;
+  border: none;
+  outline: 2.5px solid var(--neon-border-glow);
+  border-radius: 100%;
+  position: absolute;
+  top: 1%;
+  left: .5%;
+  transition: box-shadow 0.25s ease-in-out,
+              transform 0.5s ease-in-out;
+}
+#reset-btn:hover {
+  box-shadow: 0 0 15px 0px rgba(0, 255, 255, 0.7);
+}
+#reset-btn .fa-solid {
+  font-size: 1.25rem;
+}

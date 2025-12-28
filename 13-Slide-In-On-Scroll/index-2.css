@@ -1,0 +1,137 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.site-wrap {
+  width: 90%;
+  text-align: center;
+  margin: 25rem auto;
+}
+
+.site-wrap section {
+  width: 100%;
+  margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.sec-1,
+.sec-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  line-height: 1.75rem;
+}
+
+.img-container {
+  flex: 1;
+  height: 20rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateX(-100rem);
+  transition: all 0.5s;
+}
+.site-wrap section .text {
+  flex: 1;
+  opacity: 1;
+  transform: translateX(50rem);
+  transition: all 0.5s;
+}
+
+.sec-2 .img-container {
+  background-image: url(resources/sec-2.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.sec-3 .img-container {
+  background-image: url(resources/sec-3.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.sec-4 .img-container {
+  background-image: url(resources/sec-4.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.sec-5 .img-container {
+  background-image: url(resources/sec-5.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sec-1 button,
+.sec-6 a {
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  padding: 1rem 1.75rem;
+  border-radius: 2rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  outline: 1px solid white;
+  background-color: transparent;
+  transition: all 0.5s;
+}
+.sec-1 button:hover,
+.sec-6 a:hover {
+  background-color: white;
+  color: black;
+  outline: none;
+}
+
+.sec-1 *,
+.sec-6 * {
+  margin-bottom: 2rem;
+}
+.sec-1 h1,
+.sec-6 h2 {
+  font-size: 4.5rem;
+  line-height: 5rem;
+}
+
+section .text h2 {
+  font-size: 2.75rem;
+}
+section .text p {
+  width: 80%;
+  justify-self: center;
+  line-height: 1.75rem;
+  margin-top: 2.5rem;
+}
+.sec-6 p {
+  width: 60%;
+  justify-self: center;
+  line-height: 1.75rem;
+}
+section .text.active,
+.img-container.active {
+  opacity: 1;
+  transform: translateX(0rem);
+}
+
+.sec-6 * {
+  transform: translateY(1rem) scale(0.8);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0, 1.08, 1, 1.01),
+    transform 0.8s cubic-bezier(0, 1.08, 1, 1.01);
+}
+
+.sec-6 *.active {
+  transform: translateY(0rem) scale(1);
+  opacity: 1;
+}

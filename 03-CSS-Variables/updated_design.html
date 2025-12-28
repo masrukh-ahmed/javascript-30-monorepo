@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ############ LINKS ############## -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="updated_design.css">
+  <title>CSS Variables - JS30 3rd Challenge</title>
+</head>
+<body>
+  <h1 class="heading">Update CSS Variables with <span>JS</span></h1>
+  <main>
+    <div class="controls">
+
+      <!-- spacing controls -->
+      <div>
+        <label for="spacing-control">Spacing:</label>
+        <input type="range" min="0" max="100" value="0" data-sizing="px" name="spacing" id="spacing-control">
+      </div>
+
+      <!-- blur controls -->
+      <div>
+        <label for="blur-control">Blur:</label>
+        <input type="range" min="0" max="100" value="100" data-sizing="px" name="blur" id="blur-control">
+      </div>
+
+      <!-- color controls -->
+      <div>
+        <label for="color-control">Base Color:</label>
+        <div class="color-picker-hexcode">
+          <input type="color" name="background-color" id="color-control">
+          <p class="color-hex-code"></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="img-container">
+      <img src="Garden-Lovebirds-Insta-Post.jpg" alt="">
+    </div>
+  </main>
+
+  <br><br><br><br><br><br>
+</body>
+<script src="updated_design.js"></script>
+</html>

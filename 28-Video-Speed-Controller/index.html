@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Video Speed Scrubber</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <video
+        class="flex"
+        width="765"
+        height="430"
+        src="./Ghost -「AMV」- Anime MV(720P_HD).mp4"
+        loop
+        controls
+      ></video>
+      <div class="speed">
+        <div class="speed-bar"></div>
+      </div>
+    </div>
+
+    <script>
+      const speedContainer = document.querySelector(".speed");
+      const speedContainerHeight = speedContainer.offsetHeight;
+      const speedBar = document.querySelector(".speed-bar");
+      const video = document.querySelector(".flex");
+      let isMouseDown = false; //flag for mouse click detect
+      let videoSpeedMax = 4; //max video playback speed
+      video.playbackRate = 1; //default
+      speedBar.innerHTML = "1x"; // default
+      // speedBar.style.height = `${}%`;
+
+      speedContainer.addEventListener("mousedown", (e) => {
+        isMouseDown = true;
+        console.log("Mouse clicked");
+      });
+      speedContainer.addEventListener("mouseleave", (e) => {
+        isMouseDown = false;
+      });
+      speedContainer.addEventListener("mouseup", (e) => {
+        isMouseDown = false;
+      });
+      speedContainer.addEventListener("mousemove", (e) => {
+        if (!isMouseDown) return;
+        console.log("Mouse being dragged");
+        let clickY = e.pageY - e.currentTarget.offsetTop; //y height measurement where we clicked
+        let percent = clickY / e.currentTarget.offsetHeight;
+        speedBar.style.height = `${Math.round(percent * 100)}%`; //speed bar height based on dragged distance
+        console.log(`${Math.round(percent * 100)}%`);
+        speedBar.innerHTML = `${percent.toFixed(2) * videoSpeedMax}x`; //playback speed displayed on speed bar
+        video.playbackRate = percent.toFixed(2) * videoSpeedMax; //playback speed
+      });
+    </script>
+  </body>
+</html>
