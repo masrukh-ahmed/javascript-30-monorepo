@@ -12,6 +12,7 @@ Each numbered directory contains a complete, self-contained project with its own
 
 ```
 javascript30-monorepo/
+├── 01-JS-Drum-Kit/
 ├── 02-Analog-Clock/
 ├── 03-CSS-Variables/
 ├── 04-Array-Cardio-Day1/
